@@ -4,10 +4,12 @@ services:
     build:
       context: .
       dockerfile: Dockerfile
+      args:
+        NEXT_PUBLIC_API_URL: ${NEXT_PUBLIC_API_URL}
     ports:
       - "5000:3000"
     environment:
       NODE_ENV: production
       NEXT_TELEMETRY_DISABLED: "1"
-      NEXT_PUBLIC_API_URL: https://gamejam-vote-api.phantasma.info
+      NEXT_PUBLIC_API_URL: "https://gamejam-vote-api.phantasma.info"
     restart: unless-stopped
