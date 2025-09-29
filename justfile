@@ -12,6 +12,12 @@ r:
 d:
     docker compose up -d --build
 
+# Deploy docker container (force)
+[group('docker')]
+dc:
+  docker compose build --no-cache --pull
+  docker compose up -d --force-recreate
+
 # Stop docker container
 [group('docker')]
 s:
