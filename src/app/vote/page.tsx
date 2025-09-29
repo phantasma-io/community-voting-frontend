@@ -251,7 +251,7 @@ const VotePage = observer(() => {
                       >
                         {/* Banner image */}
                         {candidate.img_url ? (
-                          <div className="w-full relative h-48">
+                          <div className="w-full relative h-48 mt-4">
                             <Image
                               src={candidate.img_url}
                               alt={candidate.name}
@@ -259,7 +259,7 @@ const VotePage = observer(() => {
                               sizes="(max-width: 768px) 100vw,
                                      (max-width: 1200px) 50vw,
                                      33vw"
-                              className="object-cover rounded-t-xl"
+                              className="object-contain object-center rounded-t-xl"
                               priority={false}
                             />
                           </div>
@@ -276,6 +276,18 @@ const VotePage = observer(() => {
                                 {candidate.description}
                               </p>
                             )}
+
+                            <a
+                              href={candidate.extra as string}
+                              target="_blank"
+                              rel="noopener noreferrer"
+                              className="block px-4 py-3 text-sm text-primary hover:underline"
+                            >
+                              {new URL(
+                                candidate.extra as string,
+                              ).hostname.replace(/^www\./, "")}
+                            </a>
+
                             {votes[activeCategory.slug] === candidate.slug && (
                               <div className="mt-2 text-xs font-medium text-primary">
                                 Your vote
